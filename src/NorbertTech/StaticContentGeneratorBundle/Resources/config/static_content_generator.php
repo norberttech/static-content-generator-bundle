@@ -2,6 +2,8 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
+use NorbertTech\StaticContentGeneratorBundle\Assets\Writer\FilesystemAssets;
+use NorbertTech\StaticContentGeneratorBundle\Command\CopyAssetsCommand;
 use NorbertTech\StaticContentGeneratorBundle\Command\GenerateRoutesCommand;
 use NorbertTech\StaticContentGeneratorBundle\Content\OutputPathResolver\IndexHTML;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProvider\ProvidersCollection;
@@ -19,6 +21,13 @@ return static function (ContainerConfigurator $container) : void {
             service('static_content_generator.source_provider'),
             service('static_content_generator.transformer'),
             service('static_content_generator.writer'),
+        ])
+
+        ->set(CopyAssetsCommand::class)
+        ->tag('console.command', ['command' => CopyAssetsCommand::NAME])
+        ->args([
+            '%kernel.project_dir%',
+            service('static_content_generator.assets'),
         ])
 
         ->set('static_content_generator.transformer', HttpKernelTransformer::class)
@@ -41,16 +50,22 @@ return static function (ContainerConfigurator $container) : void {
 
         ->set('static_content_generator.writer', FilesystemWriter::class)
         ->args([
-            service('static_content_generator.writer.filesystem'),
+            service('static_content_generator.filesystem'),
             service('static_content_generator.output_path_resolver'),
         ])
-
-        ->set('static_content_generator.writer.filesystem', Filesystem::class)
 
         ->set('static_content_generator.output_path_resolver', IndexHTML::class)
         ->args([
             '%static_content_generator.output_directory%',
         ])
+
+        ->set('static_content_generator.assets', FilesystemAssets::class)
+        ->args([
+            service('static_content_generator.filesystem'),
+            '%static_content_generator.output_directory%',
+        ])
+
+        ->set('static_content_generator.filesystem', Filesystem::class)
 
         ->set(Iterator::class)
         ->args([

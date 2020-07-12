@@ -13,11 +13,11 @@
   "require-dev": {
     "doctrine/annotations": "^1.10",
     "phpunit/phpunit": "^9.2",
-    "symfony/dotenv": "^4.4|^5.0",
-    "symfony/framework-bundle": "^4.4|^5.0",
+    "symfony/dotenv": "^5.1",
+    "symfony/framework-bundle": "^5.1",
     "symfony/maker-bundle": "^1.19",
     "symfony/twig-pack": "^1.0",
-    "symfony/yaml": "^4.4|^5.1"
+    "symfony/yaml": "^5.1"
   },
   "config": {
     "optimize-autoloader": true,
