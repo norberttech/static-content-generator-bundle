@@ -45,6 +45,7 @@ final class GenerateRoutestTest extends KernelTestCase
         $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/index.html');
         $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/api.json');
         $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/named/route/index.html');
+        $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/version/1.x/index.html');
         $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/parametrized/first-param/second-param/index.html');
     }
 

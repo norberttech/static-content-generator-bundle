@@ -9,9 +9,25 @@ use Symfony\Component\Routing\Annotation\Route;
 class StaticRoutesController extends AbstractController
 {
     /**
-     * @Route("index.html", name="index_html")
+     * @Route("/", name="index")
      */
     public function index() : Response
+    {
+        return $this->render('index.html.twig');
+    }
+
+    /**
+     * @Route("index.html", name="index_html")
+     */
+    public function indexHtml() : Response
+    {
+        return $this->render('index.html.twig');
+    }
+
+    /**
+     * @Route("/version/1.x", name="version_1_x")
+     */
+    public function versionHtml() : Response
     {
         return $this->render('index.html.twig');
     }
