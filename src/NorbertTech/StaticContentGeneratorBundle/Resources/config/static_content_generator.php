@@ -11,6 +11,7 @@ use NorbertTech\StaticContentGeneratorBundle\Content\SourceProvider\RoutesWithou
 use NorbertTech\StaticContentGeneratorBundle\Content\Transformer\HttpKernelTransformer;
 use NorbertTech\StaticContentGeneratorBundle\Content\Writer\FilesystemWriter;
 use NorbertTech\StaticContentGeneratorBundle\Route\Iterator;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\Filesystem\Filesystem;
 
 return static function (ContainerConfigurator $container) : void {
@@ -18,40 +19,40 @@ return static function (ContainerConfigurator $container) : void {
         ->set(GenerateRoutesCommand::class)
         ->tag('console.command', ['command' => GenerateRoutesCommand::NAME])
         ->args([
-            service('static_content_generator.source_provider'),
-            service('static_content_generator.transformer'),
-            service('static_content_generator.writer'),
+            new Reference('static_content_generator.source_provider'),
+            new Reference('static_content_generator.transformer'),
+            new Reference('static_content_generator.writer'),
         ])
 
         ->set(CopyAssetsCommand::class)
         ->tag('console.command', ['command' => CopyAssetsCommand::NAME])
         ->args([
             '%kernel.project_dir%',
-            service('static_content_generator.assets'),
+            new Reference('static_content_generator.assets'),
         ])
 
         ->set('static_content_generator.transformer', HttpKernelTransformer::class)
         ->args([
-            service('kernel'),
-            service('router'),
+            new Reference('kernel'),
+            new Reference('router'),
         ])
 
         ->set('static_content_generator.source_provider', ProvidersCollection::class)
         ->args([
             [
-                service(RoutesWithoutParameters::class),
+                new Reference(RoutesWithoutParameters::class),
             ],
         ])
 
         ->set(RoutesWithoutParameters::class)
         ->args([
-            service(Iterator::class),
+            new Reference(Iterator::class),
         ])
 
         ->set('static_content_generator.writer', FilesystemWriter::class)
         ->args([
-            service('static_content_generator.filesystem'),
-            service('static_content_generator.output_path_resolver'),
+            new Reference('static_content_generator.filesystem'),
+            new Reference('static_content_generator.output_path_resolver'),
         ])
 
         ->set('static_content_generator.output_path_resolver', IndexHTML::class)
@@ -61,7 +62,7 @@ return static function (ContainerConfigurator $container) : void {
 
         ->set('static_content_generator.assets', FilesystemAssets::class)
         ->args([
-            service('static_content_generator.filesystem'),
+            new Reference('static_content_generator.filesystem'),
             '%static_content_generator.output_directory%',
         ])
 
@@ -69,6 +70,6 @@ return static function (ContainerConfigurator $container) : void {
 
         ->set(Iterator::class)
         ->args([
-            service('router'),
+            new Reference('router'),
         ]);
 };
