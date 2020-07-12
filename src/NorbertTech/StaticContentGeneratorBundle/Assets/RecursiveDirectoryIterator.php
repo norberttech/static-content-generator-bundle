@@ -51,6 +51,10 @@ final class RecursiveDirectoryIterator
         );
 
         foreach ($fileIterator as $file) {
+            if (!$file->isDir() && $file->getExtension() === '') {
+                yield new Asset($this->path, $file);
+            }
+
             if ($file->getExtension() && !\in_array($file->getExtension(), $this->ignoreExtensions, true)) {
                 yield new Asset($this->path, $file);
             }

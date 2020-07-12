@@ -43,7 +43,9 @@ final class CopyAssetsCommanndTest extends KernelTestCase
         $this->assertSame(0, $commandTester->getStatusCode());
 
         $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/assets/js/scripts.js');
+        $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/assets/js/scripts.min.js');
         $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/assets/css/style.css');
+        $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/assets/CNAME');
     }
 
     protected static function getKernelClass()
