@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NorbertTech\StaticContentGeneratorBundle\Command;
 
+use Aeon\Calendar\Stopwatch;
 use NorbertTech\StaticContentGeneratorBundle\Assets\Asset;
 use NorbertTech\StaticContentGeneratorBundle\Assets\Assets;
 use NorbertTech\StaticContentGeneratorBundle\Assets\RecursiveDirectoryIterator;
@@ -43,24 +44,35 @@ final class CopyAssetsCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
+        $io->title('Copy assets');
+
         $publicDirector = $this->projectDir . DIRECTORY_SEPARATOR . $input->getOption('public-dir');
 
         $iterator = new RecursiveDirectoryIterator($publicDirector, $input->getOption('ignore'));
 
-        $io->note('Coping assets...');
+        $stopwatch = new Stopwatch();
+        $stopwatch->start();
 
         $progressBar = $io->createProgressBar();
 
-        $iterator->each(function (Asset $file) use ($progressBar) : void {
+        $iterator->each(function (Asset $file) use ($progressBar, $io, $output) : void {
             $this->assets->copy($file);
+
+            if ($output->isVerbose()) {
+                $io->note('Generated content: ' . $file->relativePath());
+            }
+
             $progressBar->advance();
         });
 
+        $stopwatch->stop();
         $progressBar->finish();
 
         $io->newLine(2);
 
         $io->success('Assets copied');
+
+        $io->writeln(\sprintf('Copying time: %s seconds', $stopwatch->totalElapsedTime()->inSecondsPrecise()));
 
         return 0;
     }

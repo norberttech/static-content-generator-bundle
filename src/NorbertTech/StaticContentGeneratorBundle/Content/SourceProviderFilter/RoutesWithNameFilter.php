@@ -7,7 +7,7 @@ namespace NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter;
 use NorbertTech\StaticContentGeneratorBundle\Content\Source;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter;
 
-final class RouteNamesFilter implements SourceProviderFilter
+final class RoutesWithNameFilter implements SourceProviderFilter
 {
     /**
      * @var string[]

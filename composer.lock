@@ -4,8 +4,59 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e203e77ae972006a6281c785d4789ec7",
+    "content-hash": "6f4217252e2c5e8a1ee4be54f852685c",
     "packages": [
+        {
+            "name": "aeon-php/calendar",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aeon-php/calendar.git",
+                "reference": "fb8454b381df974b40ca2c374cc3f0afe9e7b25e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aeon-php/calendar/zipball/fb8454b381df974b40ca2c374cc3f0afe9e7b25e",
+                "reference": "fb8454b381df974b40ca2c374cc3f0afe9e7b25e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4.2"
+            },
+            "require-dev": {
+                "ext-bcmath": "*",
+                "friendsofphp/php-cs-fixer": "^2.16.3",
+                "infection/infection": "^0.16.3",
+                "phpstan/phpstan": "^0.12.26",
+                "phpstan/phpstan-phpunit": "^0.12.8",
+                "phpunit/phpunit": "^9.1",
+                "psalm/plugin-phpunit": "^0.10.1",
+                "vimeo/psalm": "^3.11"
+            },
+            "suggest": {
+                "ext-bcmath": "Compare time units with high precision"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Aeon\\": [
+                        "src/Aeon"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP type safe, immutable calendar library",
+            "keywords": [
+                "calendar",
+                "holidays",
+                "immutable",
+                "sleep"
+            ],
+            "time": "2020-07-10T20:32:51+00:00"
+        },
         {
             "name": "psr/container",
             "version": "1.0.0",

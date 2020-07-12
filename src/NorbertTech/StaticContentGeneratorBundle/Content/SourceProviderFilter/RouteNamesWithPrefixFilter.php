@@ -7,7 +7,7 @@ namespace NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter;
 use NorbertTech\StaticContentGeneratorBundle\Content\Source;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter;
 
-final class RouteNamesPrefixFilter implements SourceProviderFilter
+final class RouteNamesWithPrefixFilter implements SourceProviderFilter
 {
     /**
      * @var string[]
@@ -30,11 +30,11 @@ final class RouteNamesPrefixFilter implements SourceProviderFilter
             function (Source $source) : bool {
                 foreach ($this->routeNamesPrefixes as $prefix) {
                     if (\strncmp($source->routerName(), $prefix, \strlen($prefix)) === 0) {
-                        return false;
+                        return true;
                     }
                 }
 
-                return true;
+                return false;
             }
         );
     }

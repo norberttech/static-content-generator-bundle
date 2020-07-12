@@ -6,6 +6,7 @@
   "prefer-stable": true,
   "require": {
     "php": ">=7.4.2",
+    "aeon-php/calendar": "^0.1.0",
     "symfony/browser-kit": "^4.4|^5.0",
     "symfony/dependency-injection": "^4.4|^5.0",
     "symfony/http-kernel": "^4.4|^5.0"

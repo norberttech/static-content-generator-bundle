@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace NorbertTech\Calendar\Tests\Unit\Content\SourceProviderFilter;
 
 use NorbertTech\StaticContentGeneratorBundle\Content\Source;
-use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter\RouteNamesFilter;
+use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter\RoutesWithNameFilter;
 use PHPUnit\Framework\TestCase;
 
 final class RouteNameFilterTest extends TestCase
 {
     public function test_filter_out_all_without_expected_name() : void
     {
-        $filter = new RouteNamesFilter(['route_1']);
+        $filter = new RoutesWithNameFilter(['route_1']);
 
         $sources = $filter->filter(
             [
