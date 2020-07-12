@@ -5,6 +5,7 @@ namespace NorbertTech\StaticContentGeneratorBundle\Command;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProvider;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter\ChainFilter;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter\RouteNamesFilter;
+use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter\RouteNamesPrefixFilter;
 use NorbertTech\StaticContentGeneratorBundle\Content\Transformer;
 use NorbertTech\StaticContentGeneratorBundle\Content\Writer;
 use NorbertTech\StaticContentGeneratorBundle\StaticContent;
@@ -59,7 +60,7 @@ class GenerateRoutesCommand extends Command
             $this->writer->clean();
         }
 
-        $sourcesFilter = new ChainFilter();
+        $sourcesFilter = new ChainFilter(new RouteNamesPrefixFilter($prefixes = ['_']));
 
         if (\count($input->getOption('filter-route'))) {
             $sourcesFilter->addFilter(new RouteNamesFilter($input->getOption('filter-route')));
