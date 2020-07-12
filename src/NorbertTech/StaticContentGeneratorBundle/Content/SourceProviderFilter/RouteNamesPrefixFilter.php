@@ -29,7 +29,7 @@ final class RouteNamesPrefixFilter implements SourceProviderFilter
             $sources,
             function (Source $source) : bool {
                 foreach ($this->routeNamesPrefixes as $prefix) {
-                    if (\str_starts_with($source->routerName(), $prefix)) {
+                    if (\strncmp($source->routerName(), $prefix, \strlen($prefix)) === 0) {
                         return false;
                     }
                 }
