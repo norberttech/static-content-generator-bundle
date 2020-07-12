@@ -1,5 +1,9 @@
 # Symfony Static Content Generator Bundle
 
+![Tests](https://github.com/norberttech/static-content-generator-bundle/workflows/Tests/badge.svg?branch=1.x)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
+[![Minimum Symfony Version](https://img.shields.io/badge/Symfony-%3E%3D%204.4-f5c542.svg)](https://php.net/)
+
 Generate static html pages from all Symfony routes available in your system. 
 
 ### Installation
