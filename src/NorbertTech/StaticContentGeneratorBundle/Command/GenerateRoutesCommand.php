@@ -30,6 +30,8 @@ class GenerateRoutesCommand extends Command
 
     private Writer $writer;
 
+    private string $env;
+
     public function __construct(SourceProvider $sourceProvider, Writer $writer)
     {
         parent::__construct(self::NAME);
@@ -105,6 +107,7 @@ class GenerateRoutesCommand extends Command
                             $input->getOption('cli'),
                             DumpSourceCommand::NAME,
                             \base64_encode(\json_encode($source->serialize())),
+                            '--env=' . $input->getOption('env'),
                         ]);
                     },
                     $chunk
