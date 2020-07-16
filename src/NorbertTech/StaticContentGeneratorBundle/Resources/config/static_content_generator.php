@@ -4,6 +4,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use NorbertTech\StaticContentGeneratorBundle\Assets\Writer\FilesystemAssets;
 use NorbertTech\StaticContentGeneratorBundle\Command\CopyAssetsCommand;
+use NorbertTech\StaticContentGeneratorBundle\Command\DumpSourceCommand;
 use NorbertTech\StaticContentGeneratorBundle\Command\GenerateRoutesCommand;
 use NorbertTech\StaticContentGeneratorBundle\Content\OutputPathResolver\IndexHTML;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProvider\ProvidersCollection;
@@ -20,6 +21,12 @@ return static function (ContainerConfigurator $container) : void {
         ->tag('console.command', ['command' => GenerateRoutesCommand::NAME])
         ->args([
             new Reference('static_content_generator.source_provider'),
+            new Reference('static_content_generator.writer'),
+        ])
+
+        ->set(DumpSourceCommand::class)
+        ->tag('console.command', ['command' => DumpSourceCommand::NAME])
+        ->args([
             new Reference('static_content_generator.transformer'),
             new Reference('static_content_generator.writer'),
         ])

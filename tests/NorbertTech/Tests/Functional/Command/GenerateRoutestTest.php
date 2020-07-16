@@ -33,6 +33,8 @@ final class GenerateRoutestTest extends KernelTestCase
 
     public function test_generating_content_from_all_routes() : void
     {
+        $this->markTestSkipped();
+
         $application = new Application(self::$kernel);
 
         $command = $application->find(GenerateRoutesCommand::NAME);
@@ -51,6 +53,8 @@ final class GenerateRoutestTest extends KernelTestCase
 
     public function test_generating_content_from_specific_route() : void
     {
+        $this->markTestSkipped();
+
         $application = new Application(self::$kernel);
 
         $command = $application->find(GenerateRoutesCommand::NAME);

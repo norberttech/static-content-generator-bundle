@@ -20,20 +20,14 @@ final class StaticContent
         $this->writer = $writer;
     }
 
-    /**
-     * @param Source[] $sources
-     * @psalm-param array<Source> $sources
-     */
-    public function dump(array $sources, callable $callback = null) : void
+    public function dump(Source $source, callable $callback = null) : void
     {
-        foreach ($sources as $source) {
-            $this->writer->write(
-                $content = $this->transformer->transform($source)
-            );
+        $this->writer->write(
+            $content = $this->transformer->transform($source)
+        );
 
-            if ($callback) {
-                $callback($content);
-            }
+        if ($callback) {
+            $callback($content);
         }
     }
 }

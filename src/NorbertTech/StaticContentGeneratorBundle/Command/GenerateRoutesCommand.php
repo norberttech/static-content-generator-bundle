@@ -3,20 +3,22 @@
 namespace NorbertTech\StaticContentGeneratorBundle\Command;
 
 use Aeon\Calendar\Stopwatch;
-use NorbertTech\StaticContentGeneratorBundle\Content\Content;
+use NorbertTech\StaticContentGeneratorBundle\Content\Source;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProvider;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter\ChainFilter;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter\RouteNamesWithoutPrefixFilter;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter\RouteNamesWithPrefixFilter;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter\RoutesWithNameFilter;
-use NorbertTech\StaticContentGeneratorBundle\Content\Transformer;
 use NorbertTech\StaticContentGeneratorBundle\Content\Writer;
-use NorbertTech\StaticContentGeneratorBundle\StaticContent;
+use NorbertTech\SymfonyProcessExecutor\AsynchronousExecutor;
+use NorbertTech\SymfonyProcessExecutor\ProcessPool;
+use NorbertTech\SymfonyProcessExecutor\ProcessWrapper;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Process\Process;
 
 class GenerateRoutesCommand extends Command
 {
@@ -26,15 +28,12 @@ class GenerateRoutesCommand extends Command
 
     private SourceProvider $sourceProvider;
 
-    private Transformer $generator;
-
     private Writer $writer;
 
-    public function __construct(SourceProvider $sourceProvider, Transformer $generator, Writer $writer)
+    public function __construct(SourceProvider $sourceProvider, Writer $writer)
     {
         parent::__construct(self::NAME);
         $this->sourceProvider = $sourceProvider;
-        $this->generator = $generator;
         $this->writer = $writer;
     }
 
@@ -44,7 +43,9 @@ class GenerateRoutesCommand extends Command
             ->setDescription('Transform routes into static content and dump them into the output location')
             ->addOption('clean', null, InputOption::VALUE_OPTIONAL, 'Cleanup output location before dumping new content', false)
             ->addOption('filter-route', 'r', InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Filter out all routes except those with given name')
-            ->addOption('filter-route-prefix', 'rp', InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Filter out all routes except those with given name prefix');
+            ->addOption('filter-route-prefix', 'rp', InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Filter out all routes except those with given name prefix')
+            ->addOption('parallel', 'p', InputOption::VALUE_OPTIONAL, 'How many process to launch in parallel', 1)
+            ->addOption('cli', 'c', InputOption::VALUE_OPTIONAL, 'Path to Symfony CLI application entry', $_SERVER['SCRIPT_NAME']);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) : int
@@ -52,11 +53,6 @@ class GenerateRoutesCommand extends Command
         $io = new SymfonyStyle($input, $output);
 
         $io->title('Generate routes static content');
-
-        $generator = new StaticContent(
-            $this->generator,
-            $this->writer,
-        );
 
         $clean = ($input->getOption('clean') !== false);
 
@@ -80,6 +76,12 @@ class GenerateRoutesCommand extends Command
             $sourcesFilter->addFilter(new RouteNamesWithPrefixFilter($input->getOption('filter-route-prefix')));
         }
 
+        if ((int) $input->getOption('parallel') <= 0) {
+            $io->error('Parallel option must be greater or equal 1');
+
+            return 1;
+        }
+
         $sources = $sourcesFilter->filter($this->sourceProvider->all());
 
         if (!\count($sources)) {
@@ -93,16 +95,48 @@ class GenerateRoutesCommand extends Command
         $stopwatch = new Stopwatch();
         $stopwatch->start();
 
-        $generator->dump(
-            $sources,
-            function (Content $content) use ($progress, $output, $io) : void {
-                if ($output->isVerbose()) {
-                    $io->note('Generated content: ' . $content->path());
-                }
+        $chunks = \array_chunk($sources, (int) $input->getOption('parallel'));
 
-                $progress->advance();
+        foreach ($chunks as $chunk) {
+            $processes = new ProcessPool(
+                ...\array_map(
+                    function (Source $source) use ($input) : Process {
+                        return new Process([
+                            $input->getOption('cli'),
+                            DumpSourceCommand::NAME,
+                            \base64_encode(\json_encode($source->serialize())),
+                        ]);
+                    },
+                    $chunk
+                )
+            );
+
+            if ($io->isVerbose()) {
+                $io->note('Starting ' . \count($chunks) . ' processes...');
             }
-        );
+
+            $executor = new AsynchronousExecutor($processes);
+
+            $executor->execute();
+            $executor->waitForAllToFinish();
+
+            if ($executor->pool()->withFailureExitCode() > 0) {
+                $executor->pool()->each(function (ProcessWrapper $processWrapper) use ($io) : void {
+                    if ($processWrapper->exitCode() !== 0) {
+                        $io->writeln('Process "' . $processWrapper->process()->getCommandLine() . '" failed');
+                        $io->error($processWrapper->process()->getErrorOutput());
+                    }
+                });
+
+                return 1;
+            }
+
+            if ($io->isVerbose()) {
+                $io->note('Finished ' . \count($chunks) . ' processes in ' . $executor->executionTime()->inSecondsPrecise() . ' seconds');
+            }
+
+            $progress->advance(\count($chunk));
+        }
 
         $stopwatch->stop();
 
