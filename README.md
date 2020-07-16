@@ -38,6 +38,13 @@ Transform all routes into static html pages.
 bin/console static-content-generator:generate:routes
 ```
 
+Options: 
+
+* `--parallel=4` - generate static content in parallel using 4 sub processes at once
+* `--clean` - clean output path before start
+* `--filter-route` - generate content only for given routes
+* `--filter-route-prefix` - generate content for routes with given prefix
+
 Copy all assets from `public` directory into output directory
 
 ```bash

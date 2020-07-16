@@ -35,6 +35,7 @@ final class DumpSourceCommand extends Command
     protected function configure() : void
     {
         $this
+            ->setHidden(true)
             ->setDescription('Dump source into a static content')
             ->addArgument('source', InputArgument::REQUIRED, 'Serialized and base64 encoded sourcex content');
     }
