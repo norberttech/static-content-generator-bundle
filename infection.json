@@ -9,13 +9,15 @@
     ]
   },
   "logs": {
-    "text": "var/logs/infection.log",
-    "summary": "var/logs/infection_summary.log",
-    "debug": "var/logs/infection_summary.log"
+    "text": "./var/infection/infection.log",
+    "summary": "./var/infection/infection_summary.log",
+    "debug": "./var/infection/infection_summary.log",
+    "badge": {
+      "branch": "1.x"
+    }
   },
   "mutators": {
-    "@default": true,
-    "PublicVisibility": false
+    "@default": true
   },
   "testFramework": "phpunit",
   "bootstrap": "./vendor/autoload.php"
