@@ -1,62 +1,67 @@
 {
-  "name": "norberttech/static-content-generator-bundle",
-  "type": "library",
-  "description": "Generate static html pages from your symfony application",
-  "keywords": ["Symfony", "bundle", "static", "pages", "generator"],
-  "prefer-stable": true,
-  "require": {
-    "php": ">=7.4.2",
-    "ext-json": "*",
-    "norberttech/symfony-process-executor": "^2.0",
-    "symfony/browser-kit": "^4.4|^5.0",
-    "symfony/dependency-injection": "^4.4|^5.0",
-    "symfony/http-kernel": "^4.4|^5.0"
-  },
-  "require-dev": {
-    "doctrine/annotations": "^1.10",
-    "phpunit/phpunit": "^9.2",
-    "symfony/dotenv": "^5.1",
-    "symfony/framework-bundle": "^5.1",
-    "symfony/maker-bundle": "^1.19",
-    "symfony/twig-pack": "^1.0",
-    "symfony/web-profiler-bundle": "^5.1",
-    "symfony/yaml": "^5.1"
-  },
-  "config": {
-    "optimize-autoloader": true,
-    "sort-packages": true
-  },
-  "license": "MIT",
-  "autoload": {
-    "psr-4": {
-      "NorbertTech\\": [
-        "src/NorbertTech"
-      ]
+    "name": "norberttech/static-content-generator-bundle",
+    "type": "library",
+    "description": "Generate static html pages from your symfony application",
+    "keywords": [
+        "Symfony",
+        "bundle",
+        "static",
+        "pages",
+        "generator"
+    ],
+    "prefer-stable": true,
+    "require": {
+        "php": "~7.4.2 || ~8.0.0",
+        "ext-json": "*",
+        "norberttech/symfony-process-executor": "^2.0",
+        "symfony/browser-kit": "^4.4|^5.0",
+        "symfony/dependency-injection": "^4.4|^5.0",
+        "symfony/http-kernel": "^4.4|^5.0"
+    },
+    "require-dev": {
+        "doctrine/annotations": "^1.10",
+        "symfony/dotenv": "^5.1",
+        "symfony/framework-bundle": "^5.1",
+        "symfony/maker-bundle": "^1.19",
+        "symfony/twig-pack": "^1.0",
+        "symfony/web-profiler-bundle": "^5.1",
+        "symfony/yaml": "^5.1"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "NorbertTech\\": [
+                "src/NorbertTech"
+            ]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FixtureProject\\": "tests/fixtures/project/src",
+            "NorbertTech\\Calendar\\Tests\\": "tests/NorbertTech/Tests/"
+        }
+    },
+    "scripts": {
+        "build": [
+            "@static:analyze",
+            "@test",
+            "@test:mutation"
+        ],
+        "test": [
+            "tools/phpunit.phar"
+        ],
+        "test:mutation": [
+            "tools/infection --threads=2"
+        ],
+        "static:analyze": [
+            "tools/psalm --output-format=compact",
+            "tools/phpstan analyze -c phpstan.neon",
+            "tools/php-cs-fixer fix --dry-run"
+        ],
+        "cs:php:fix": "tools/php-cs-fixer fix"
     }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "FixtureProject\\" : "tests/fixtures/project/src",
-      "NorbertTech\\Calendar\\Tests\\": "tests/NorbertTech/Tests/"
-    }
-  },
-  "scripts": {
-    "build": [
-      "@static:analyze",
-      "@test",
-      "@test:mutation"
-    ],
-    "test": [
-      "phpunit"
-    ],
-    "test:mutation": [
-      "tools/infection --threads=2"
-    ],
-    "static:analyze": [
-      "tools/psalm --output-format=compact",
-      "tools/phpstan analyze -c phpstan.neon",
-      "tools/php-cs-fixer fix --dry-run"
-    ],
-    "cs:php:fix": "tools/php-cs-fixer fix"
-  }
 }
