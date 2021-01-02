@@ -1,4 +1,4 @@
-## [Unreleased] - 2021-01-02
+## [0.1.0] - 2021-01-02
 
 ### Added
   - [#1](https://github.com/norberttech/static-content-generator-bundle/pull/1) - **PHP8 support** - [@norberttech](https://github.com/norberttech)
@@ -11,6 +11,7 @@
   - [4cb439](https://github.com/norberttech/static-content-generator-bundle/commit/4cb439fbee8749cecf2b7e6d6ca68d29401b9319) - **command that copy all assets to output directory** - [@norberttech](https://github.com/norberttech)
 
 ### Changed
+  - [807b07](https://github.com/norberttech/static-content-generator-bundle/commit/807b07feaa6ac79157a4de67ac1406b9db60595f) - **changelog.md** - [@norberttech](https://github.com/norberttech)
   - [422b87](https://github.com/norberttech/static-content-generator-bundle/commit/422b87bb31d30a2e0ca8565c22821149d853dbe9) - **dependencies, changed infection execution** - [@norberttech](https://github.com/norberttech)
   - [1ee44e](https://github.com/norberttech/static-content-generator-bundle/commit/1ee44eb124ac5693ac0d4de621c9a1c33888ec97) - **Pass env to subprocess** - [@norberttech](https://github.com/norberttech)
   - [180219](https://github.com/norberttech/static-content-generator-bundle/commit/18021914e8e0f9f206be7f8e926c82400fff8315) - **Use norberttech/symfony-process-executor to dump sources in parallel** - [@norberttech](https://github.com/norberttech)
