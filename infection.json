@@ -20,5 +20,8 @@
     "@default": true
   },
   "testFramework": "phpunit",
+  "phpUnit": {
+    "customPath": "tools\/phpunit.phar"
+  },
   "bootstrap": "./vendor/autoload.php"
 }
