@@ -1,32 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/schema/9.2.xsd"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
          colors="true"
          bootstrap="vendor/autoload.php"
          cacheResultFile="var/phpunit/.result.cache"
 >
-    <php>
-        <ini name="error_reporting" value="-1" />
-        <server name="APP_ENV" value="test" force="true" />
-        <server name="SHELL_VERBOSITY" value="-1" />
-    </php>
-
-    <logging>
-        <log type="coverage-html" target="var/phpunit/coverage/html" lowUpperBound="95" highLowerBound="100"/>
-    </logging>
-    <filter>
-        <whitelist>
-            <directory suffix=".php">src</directory>
-        </whitelist>
-    </filter>
-
-    <testsuites>
-        <testsuite name="functional">
-            <directory>tests/NorbertTech/Tests/Functional</directory>
-        </testsuite>
-        <testsuite name="unit">
-            <directory>tests/NorbertTech/Tests/Unit</directory>
-        </testsuite>
-    </testsuites>
+  <coverage>
+    <include>
+      <directory suffix=".php">src</directory>
+    </include>
+    <report>
+      <html outputDirectory="var/phpunit/coverage/html" lowUpperBound="95" highLowerBound="100"/>
+    </report>
+  </coverage>
+  <php>
+    <ini name="error_reporting" value="-1"/>
+    <server name="APP_ENV" value="test" force="true"/>
+    <server name="SHELL_VERBOSITY" value="-1"/>
+  </php>
+  <logging/>
+  <testsuites>
+    <testsuite name="functional">
+      <directory>tests/NorbertTech/Tests/Functional</directory>
+    </testsuite>
+    <testsuite name="unit">
+      <directory>tests/NorbertTech/Tests/Unit</directory>
+    </testsuite>
+  </testsuites>
 </phpunit>
