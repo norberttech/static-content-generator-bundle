@@ -1,4 +1,4 @@
-## [Unreleased] - 2020-08-18
+## [Unreleased] - 2021-01-02
 
 ### Added
   - [d66e6f](https://github.com/norberttech/static-content-generator-bundle/commit/d66e6fecf7311342000956e9539c5598f008b0a4) - **command options to readme and made DumSourceCommand hidden** - [@norberttech](https://github.com/norberttech)
