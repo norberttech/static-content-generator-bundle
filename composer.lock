@@ -118,25 +118,22 @@
         },
         {
             "name": "norberttech/symfony-process-executor",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/norberttech/symfony-process-executor.git",
-                "reference": "851db4fe52e7573f202b463a4a398803488f6083"
+                "reference": "4a9111e5c5072324bd5678e9c1d029859fd22829"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/norberttech/symfony-process-executor/zipball/851db4fe52e7573f202b463a4a398803488f6083",
-                "reference": "851db4fe52e7573f202b463a4a398803488f6083",
+                "url": "https://api.github.com/repos/norberttech/symfony-process-executor/zipball/4a9111e5c5072324bd5678e9c1d029859fd22829",
+                "reference": "4a9111e5c5072324bd5678e9c1d029859fd22829",
                 "shasum": ""
             },
             "require": {
                 "aeon-php/sleep": ">=0.5.0",
-                "php": ">=7.4.2",
+                "php": "~7.4.2 || ~8.0.0",
                 "symfony/process": "^3.4|^4.4|^5.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9.1"
             },
             "type": "library",
             "autoload": {
@@ -151,9 +148,9 @@
             "description": "Symfony Process Component on steroids, async/sync execution chain.",
             "support": {
                 "issues": "https://github.com/norberttech/symfony-process-executor/issues",
-                "source": "https://github.com/norberttech/symfony-process-executor/tree/2.0"
+                "source": "https://github.com/norberttech/symfony-process-executor/tree/2.0.3"
             },
-            "time": "2020-08-18T20:14:38+00:00"
+            "time": "2021-01-02T21:44:49+00:00"
         },
         {
             "name": "psr/container",
