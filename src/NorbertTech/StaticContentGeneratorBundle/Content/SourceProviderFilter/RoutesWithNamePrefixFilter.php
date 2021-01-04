@@ -7,7 +7,7 @@ namespace NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter;
 use NorbertTech\StaticContentGeneratorBundle\Content\Source;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter;
 
-final class RouteNamesWithPrefixFilter implements SourceProviderFilter
+final class RoutesWithNamePrefixFilter implements SourceProviderFilter
 {
     /**
      * @var string[]
@@ -25,17 +25,19 @@ final class RouteNamesWithPrefixFilter implements SourceProviderFilter
 
     public function filter(array $sources = []) : array
     {
-        return \array_filter(
-            $sources,
-            function (Source $source) : bool {
-                foreach ($this->routeNamesPrefixes as $prefix) {
-                    if (\strncmp($source->routerName(), $prefix, \strlen($prefix)) === 0) {
-                        return true;
+        return \array_values(
+            \array_filter(
+                $sources,
+                function (Source $source) : bool {
+                    foreach ($this->routeNamesPrefixes as $prefix) {
+                        if (\strncmp($source->routerName(), $prefix, \strlen($prefix)) === 0) {
+                            return true;
+                        }
                     }
-                }
 
-                return false;
-            }
+                    return false;
+                }
+            )
         );
     }
 }
