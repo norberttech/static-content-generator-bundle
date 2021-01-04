@@ -44,6 +44,8 @@ Options:
 * `--clean` - clean output path before start
 * `--filter-route` - generate content only for given routes
 * `--filter-route-prefix` - generate content for routes with given prefix
+* `--exclude-route` - generate content for all routes except given
+* `--exclude-route-prefix` - generate content for all routes except those with given prefix
 
 Copy all assets from `public` directory into output directory
 

@@ -43,6 +43,14 @@ class StaticRoutesController extends AbstractController
     }
 
     /**
+     * @Route("api.xml", name="api_xml")
+     */
+    public function apiXML() : Response
+    {
+        return $this->render('api.xml.twig');
+    }
+
+    /**
      * @Route("/named/route", name="named_route")
      */
     public function namedRoute() : Response

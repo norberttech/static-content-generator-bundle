@@ -6,9 +6,10 @@ use Aeon\Calendar\Stopwatch;
 use NorbertTech\StaticContentGeneratorBundle\Content\Source;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProvider;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter\ChainFilter;
-use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter\RouteNamesWithoutPrefixFilter;
-use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter\RouteNamesWithPrefixFilter;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter\RoutesWithNameFilter;
+use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter\RoutesWithNamePrefixFilter;
+use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter\RoutesWithoutNameFilter;
+use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter\RoutesWithoutNamePrefixFilter;
 use NorbertTech\StaticContentGeneratorBundle\Content\Writer;
 use NorbertTech\SymfonyProcessExecutor\AsynchronousExecutor;
 use NorbertTech\SymfonyProcessExecutor\ProcessPool;
@@ -46,6 +47,8 @@ class GenerateRoutesCommand extends Command
             ->addOption('clean', null, InputOption::VALUE_OPTIONAL, 'Cleanup output location before dumping new content', false)
             ->addOption('filter-route', 'r', InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Filter out all routes except those with given name')
             ->addOption('filter-route-prefix', 'rp', InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Filter out all routes except those with given name prefix')
+            ->addOption('exclude-route', 'ex', InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Exclude routes with given name')
+            ->addOption('exclude-route-prefix', 'exp', InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Exclude routes that starts with given name prefix')
             ->addOption('parallel', 'p', InputOption::VALUE_OPTIONAL, 'How many process to launch in parallel', 1)
             ->addOption('cli', 'c', InputOption::VALUE_OPTIONAL, 'Path to Symfony CLI application entry', $_SERVER['SCRIPT_NAME']);
     }
@@ -67,7 +70,7 @@ class GenerateRoutesCommand extends Command
         }
 
         $sourcesFilter = new ChainFilter(
-            new RouteNamesWithoutPrefixFilter($prefixes = ['_'])
+            new RoutesWithoutNamePrefixFilter($prefixes = ['_'])
         );
 
         if (\count($input->getOption('filter-route'))) {
@@ -75,7 +78,15 @@ class GenerateRoutesCommand extends Command
         }
 
         if (\count($input->getOption('filter-route-prefix'))) {
-            $sourcesFilter->addFilter(new RouteNamesWithPrefixFilter($input->getOption('filter-route-prefix')));
+            $sourcesFilter->addFilter(new RoutesWithNamePrefixFilter($input->getOption('filter-route-prefix')));
+        }
+
+        if (\count($input->getOption('exclude-route'))) {
+            $sourcesFilter->addFilter(new RoutesWithoutNameFilter($input->getOption('exclude-route')));
+        }
+
+        if (\count($input->getOption('exclude-route-prefix'))) {
+            $sourcesFilter->addFilter(new RoutesWithoutNamePrefixFilter($input->getOption('exclude-route-prefix')));
         }
 
         if ((int) $input->getOption('parallel') <= 0) {

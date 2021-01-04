@@ -33,13 +33,13 @@ final class GenerateRoutestTest extends KernelTestCase
 
     public function test_generating_content_from_all_routes() : void
     {
-        $this->markTestSkipped();
-
         $application = new Application(self::$kernel);
 
         $command = $application->find(GenerateRoutesCommand::NAME);
         $commandTester = new CommandTester($command);
-        $commandTester->execute([]);
+        $commandTester->execute([
+            '--cli' => self::$kernel->getProjectDir() . '/bin/console',
+        ]);
 
         $this->assertStringContainsString('Static content generated', $commandTester->getDisplay());
         $this->assertSame(0, $commandTester->getStatusCode());
@@ -53,13 +53,12 @@ final class GenerateRoutestTest extends KernelTestCase
 
     public function test_generating_content_from_specific_route() : void
     {
-        $this->markTestSkipped();
-
         $application = new Application(self::$kernel);
 
         $command = $application->find(GenerateRoutesCommand::NAME);
         $commandTester = new CommandTester($command);
         $commandTester->execute([
+            '--cli' => self::$kernel->getProjectDir() . '/bin/console',
             '--filter-route' => ['index_html'],
         ]);
 
@@ -70,6 +69,50 @@ final class GenerateRoutestTest extends KernelTestCase
         $this->assertFileDoesNotExist(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/api.json');
         $this->assertFileDoesNotExist(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/named/route/index.html');
         $this->assertFileDoesNotExist(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/parametrized/first-param/second-param/index.html');
+    }
+
+    public function test_generating_content_except_specific_route() : void
+    {
+        $application = new Application(self::$kernel);
+
+        $command = $application->find(GenerateRoutesCommand::NAME);
+        $commandTester = new CommandTester($command);
+        $commandTester->execute([
+            '--cli' => self::$kernel->getProjectDir() . '/bin/console',
+            '--exclude-route' => ['api'],
+        ]);
+
+        $this->assertStringContainsString('Static content generated', $commandTester->getDisplay());
+        $this->assertSame(0, $commandTester->getStatusCode());
+
+        $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/index.html');
+        $this->assertFileDoesNotExist(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/api.json');
+        $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/api.xml');
+        $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/named/route/index.html');
+        $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/version/1.x/index.html');
+        $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/parametrized/first-param/second-param/index.html');
+    }
+
+    public function test_generating_content_except_specific_route_prefix() : void
+    {
+        $application = new Application(self::$kernel);
+
+        $command = $application->find(GenerateRoutesCommand::NAME);
+        $commandTester = new CommandTester($command);
+        $commandTester->execute([
+            '--cli' => self::$kernel->getProjectDir() . '/bin/console',
+            '--exclude-route-prefix' => ['api'],
+        ]);
+
+        $this->assertStringContainsString('Static content generated', $commandTester->getDisplay());
+        $this->assertSame(0, $commandTester->getStatusCode());
+
+        $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/index.html');
+        $this->assertFileDoesNotExist(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/api.json');
+        $this->assertFileDoesNotExist(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/api.xml');
+        $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/named/route/index.html');
+        $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/version/1.x/index.html');
+        $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/parametrized/first-param/second-param/index.html');
     }
 
     protected static function getKernelClass()

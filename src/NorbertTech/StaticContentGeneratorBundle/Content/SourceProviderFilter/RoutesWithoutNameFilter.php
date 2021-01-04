@@ -7,7 +7,7 @@ namespace NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter;
 use NorbertTech\StaticContentGeneratorBundle\Content\Source;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter;
 
-final class RoutesWithNameFilter implements SourceProviderFilter
+final class RoutesWithoutNameFilter implements SourceProviderFilter
 {
     /**
      * @var string[]
@@ -29,7 +29,7 @@ final class RoutesWithNameFilter implements SourceProviderFilter
             \array_filter(
                 $sources,
                 function (Source $source) : bool {
-                    return \in_array($source->routerName(), $this->routeNames, true);
+                    return !\in_array($source->routerName(), $this->routeNames, true);
                 }
             )
         );

@@ -8,7 +8,7 @@ use NorbertTech\StaticContentGeneratorBundle\Content\Source;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProviderFilter\RoutesWithNameFilter;
 use PHPUnit\Framework\TestCase;
 
-final class RouteNameFilterTest extends TestCase
+final class RoutesWithNameFilterTest extends TestCase
 {
     public function test_filter_out_all_without_expected_name() : void
     {
