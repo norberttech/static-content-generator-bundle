@@ -1,3 +1,14 @@
+## [0.2.0] - 2021-01-04
+
+### Added
+  - [#3](https://github.com/norberttech/static-content-generator-bundle/pull/3) - **--exclude-route and --exclude-route-prefix options** - [@norberttech](https://github.com/norberttech)
+
+### Changed
+  - [7c8924](https://github.com/norberttech/static-content-generator-bundle/commit/7c892453aa993f1fb9857588614d8d007b3b0967) - **changelog** - [@norberttech](https://github.com/norberttech)
+
+### Fixed
+  - [#3](https://github.com/norberttech/static-content-generator-bundle/pull/3) - **previously skipped functional tests** - [@norberttech](https://github.com/norberttech)
+
 ## [0.1.0] - 2021-01-02
 
 ### Added
