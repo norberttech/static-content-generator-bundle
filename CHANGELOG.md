@@ -1,4 +1,4 @@
-## [Unreleased] - 2021-01-25
+## [0.3.0] - 2021-01-25
 
 ### Added
 - [#6](https://github.com/norberttech/static-content-generator-bundle/pull/6) - **aeon-php/automation integration** - [@norberttech](https://github.com/norberttech)
