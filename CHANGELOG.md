@@ -1,7 +1,11 @@
-## [Unreleased] - 2021-01-18
+## [Unreleased] - 2021-01-25
 
 ### Added
+- [#6](https://github.com/norberttech/static-content-generator-bundle/pull/6) - **aeon-php/automation integration** - [@norberttech](https://github.com/norberttech)
 - [bb2112](https://github.com/norberttech/static-content-generator-bundle/commit/bb2112c752fdbf81f89453918681afbf5ada8310) - **documentation linter github workflow** - [@norberttech](https://github.com/norberttech)
+
+### Fixed
+- [#6](https://github.com/norberttech/static-content-generator-bundle/pull/6) - **boken norberttech/symfony-process-executor broken by aeon-php/sleep bc break** - [@norberttech](https://github.com/norberttech)
 
 ## [0.2.0] - 2021-01-05
 
