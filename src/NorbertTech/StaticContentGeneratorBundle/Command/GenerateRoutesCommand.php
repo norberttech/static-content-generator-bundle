@@ -49,7 +49,7 @@ class GenerateRoutesCommand extends Command
             ->addOption('filter-route-prefix', 'rp', InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Filter out all routes except those with given name prefix')
             ->addOption('exclude-route', 'ex', InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Exclude routes with given name')
             ->addOption('exclude-route-prefix', 'exp', InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Exclude routes that starts with given name prefix')
-            ->addOption('parallel', 'p', InputOption::VALUE_OPTIONAL, 'How many process to launch in parallel', 1)
+            ->addOption('parallel', 'p', InputOption::VALUE_OPTIONAL, 'How many process to launch in parallel', '1')
             ->addOption('cli', 'c', InputOption::VALUE_OPTIONAL, 'Path to Symfony CLI application entry', $_SERVER['SCRIPT_NAME']);
     }
 
