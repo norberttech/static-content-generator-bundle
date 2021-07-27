@@ -1,4 +1,4 @@
-## [Unreleased] - 2021-07-01
+## [Unreleased] - 2021-07-27
 
 ### Changed
 - [83a090](https://github.com/norberttech/static-content-generator-bundle/commit/83a090bb5b8b744138e88ae7f81b44ba5ce2d87b) - **Updated dependencies** - [@norberttech](https://github.com/norberttech)
