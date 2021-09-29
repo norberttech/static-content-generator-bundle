@@ -4,6 +4,7 @@
 - [ca155e](https://github.com/norberttech/static-content-generator-bundle/commit/ca155e2d1c503b53a3694b31155e993a2f6bde96) - **dependabot auto merge workflow** - [@norberttech](https://github.com/norberttech)
 
 ### Changed
+- [9e4c1b](https://github.com/norberttech/static-content-generator-bundle/commit/9e4c1b9b91fa2ffd90f57e0e6976a199c0345b44) - **dependencies** - [@norberttech](https://github.com/norberttech)
 - [83a090](https://github.com/norberttech/static-content-generator-bundle/commit/83a090bb5b8b744138e88ae7f81b44ba5ce2d87b) - **Updated dependencies** - [@norberttech](https://github.com/norberttech)
 
 ## [0.3.0] - 2021-01-25
