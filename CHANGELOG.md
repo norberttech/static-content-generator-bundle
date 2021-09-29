@@ -1,4 +1,7 @@
-## [Unreleased] - 2021-08-31
+## [Unreleased] - 2021-09-29
+
+### Added
+- [ca155e](https://github.com/norberttech/static-content-generator-bundle/commit/ca155e2d1c503b53a3694b31155e993a2f6bde96) - **dependabot auto merge workflow** - [@norberttech](https://github.com/norberttech)
 
 ### Changed
 - [83a090](https://github.com/norberttech/static-content-generator-bundle/commit/83a090bb5b8b744138e88ae7f81b44ba5ce2d87b) - **Updated dependencies** - [@norberttech](https://github.com/norberttech)
