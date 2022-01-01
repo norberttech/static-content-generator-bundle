@@ -101,6 +101,7 @@ final class IndexHTML implements OutputPathResolver
         return $this->outputDirectory;
     }
 
+    /** @codeCoverageIgnore */
     public function resolve(Content $content) : string
     {
         if ($extension = \pathinfo($content->path(), PATHINFO_EXTENSION)) {
