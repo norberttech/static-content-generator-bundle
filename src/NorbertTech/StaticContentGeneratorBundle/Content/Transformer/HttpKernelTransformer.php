@@ -32,9 +32,12 @@ final class HttpKernelTransformer implements Transformer
             throw new \RuntimeException('Can\'t generate static content for route ' . $source->routerName());
         }
 
-        return new Content(
-            $path,
-            (string) $kernelBrowser->getResponse()->getContent()
-        );
+        $content = $kernelBrowser->getResponse()->getContent();
+
+        if ($content === false) {
+            throw new \RuntimeException('Can\'t generate static content for route ' . $source->routerName());
+        }
+
+        return new Content($path, $content);
     }
 }

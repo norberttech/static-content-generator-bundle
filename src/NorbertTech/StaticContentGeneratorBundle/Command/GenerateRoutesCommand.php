@@ -31,8 +31,6 @@ class GenerateRoutesCommand extends Command
 
     private Writer $writer;
 
-    private string $env;
-
     public function __construct(SourceProvider $sourceProvider, Writer $writer)
     {
         parent::__construct(self::NAME);

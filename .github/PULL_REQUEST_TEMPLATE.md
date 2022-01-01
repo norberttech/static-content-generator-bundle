@@ -9,6 +9,10 @@
   <ul id="fixed">
     <!-- <li>Something that wasn't working fine</li> -->
   </ul>
+  <h4>Updated</h4>
+  <ul id="updated">
+    <!-- <li>Something updated</li> -->
+  </ul> 
   <h4>Changed</h4>
   <ul id="changed">
     <!-- <li>Something into something new</li> -->
