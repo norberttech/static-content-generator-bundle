@@ -1,4 +1,4 @@
-## [Unreleased] - 2022-01-01
+## [0.4.0] - 2022-01-01
 
 ### Added
 - [#119](https://github.com/norberttech/static-content-generator-bundle/pull/119) - **php 8.1 support** - [@norberttech](https://github.com/norberttech)
