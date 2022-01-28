@@ -5,8 +5,7 @@ on:
     types:
       - completed
     workflows:
-      - 'Tests'
-      - 'Static Analyze'
+      - 'Test Suite'
 
 jobs:
   merge-me:
