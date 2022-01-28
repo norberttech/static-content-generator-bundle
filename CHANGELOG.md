@@ -1,3 +1,11 @@
+## [Unreleased] - 2022-01-28
+
+### Added
+- [#136](https://github.com/norberttech/static-content-generator-bundle/pull/136) - **New github actions reusable worflows** - [@norberttech](https://github.com/norberttech)
+
+### Changed
+- [#136](https://github.com/norberttech/static-content-generator-bundle/pull/136) - **php version constraint in composer.json** - [@norberttech](https://github.com/norberttech)
+
 ## [0.4.0] - 2022-01-01
 
 ### Added
