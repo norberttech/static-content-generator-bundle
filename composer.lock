@@ -3270,16 +3270,16 @@
         },
         {
             "name": "symfony/twig-bridge",
-            "version": "v5.4.3",
+            "version": "v5.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/twig-bridge.git",
-                "reference": "925719b20832e3dabd399fd9ebf85ed0eabf9999"
+                "reference": "648c8694a9470ae4aaf64cbce1b640f5941fd7c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/925719b20832e3dabd399fd9ebf85ed0eabf9999",
-                "reference": "925719b20832e3dabd399fd9ebf85ed0eabf9999",
+                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/648c8694a9470ae4aaf64cbce1b640f5941fd7c9",
+                "reference": "648c8694a9470ae4aaf64cbce1b640f5941fd7c9",
                 "shasum": ""
             },
             "require": {
@@ -3371,7 +3371,7 @@
             "description": "Provides integration for Twig with various Symfony components",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/twig-bridge/tree/v5.4.3"
+                "source": "https://github.com/symfony/twig-bridge/tree/v5.4.5"
             },
             "funding": [
                 {
@@ -3387,7 +3387,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-02T09:53:40+00:00"
+            "time": "2022-02-09T08:59:58+00:00"
         },
         {
             "name": "symfony/twig-bundle",
@@ -3598,16 +3598,16 @@
         },
         {
             "name": "symfony/web-profiler-bundle",
-            "version": "v5.4.3",
+            "version": "v5.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/web-profiler-bundle.git",
-                "reference": "296fc6ccf3ea706889dcf33f02eb20dcf953612d"
+                "reference": "3759b0781bb7f9c5041b6efddb89b8d7d91ee25e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/web-profiler-bundle/zipball/296fc6ccf3ea706889dcf33f02eb20dcf953612d",
-                "reference": "296fc6ccf3ea706889dcf33f02eb20dcf953612d",
+                "url": "https://api.github.com/repos/symfony/web-profiler-bundle/zipball/3759b0781bb7f9c5041b6efddb89b8d7d91ee25e",
+                "reference": "3759b0781bb7f9c5041b6efddb89b8d7d91ee25e",
                 "shasum": ""
             },
             "require": {
@@ -3658,7 +3658,7 @@
             "description": "Provides a development tool that gives detailed information about the execution of any request",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/web-profiler-bundle/tree/v5.4.3"
+                "source": "https://github.com/symfony/web-profiler-bundle/tree/v5.4.5"
             },
             "funding": [
                 {
@@ -3674,7 +3674,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-02T09:53:40+00:00"
+            "time": "2022-02-25T16:17:01+00:00"
         },
         {
             "name": "symfony/yaml",
