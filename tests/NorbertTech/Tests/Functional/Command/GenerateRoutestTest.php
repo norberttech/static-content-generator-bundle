@@ -115,7 +115,7 @@ final class GenerateRoutestTest extends KernelTestCase
         $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/parametrized/first-param/second-param/index.html');
     }
 
-    protected static function getKernelClass()
+    protected static function getKernelClass() : string
     {
         return Kernel::class;
     }

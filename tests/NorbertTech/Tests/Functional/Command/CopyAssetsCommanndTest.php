@@ -48,7 +48,7 @@ final class CopyAssetsCommanndTest extends KernelTestCase
         $this->assertFileExists(self::$kernel->getContainer()->getParameter('static_content_generator.output_directory') . '/assets/CNAME');
     }
 
-    protected static function getKernelClass()
+    protected static function getKernelClass() : string
     {
         return Kernel::class;
     }
