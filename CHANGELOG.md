@@ -1,6 +1,7 @@
-## [Unreleased] - 2022-01-28
+## [Unreleased] - 2022-07-07
 
 ### Added
+- [#238](https://github.com/norberttech/static-content-generator-bundle/pull/238) - **Symfony 6.x support** - [@norberttech](https://github.com/norberttech)
 - [#136](https://github.com/norberttech/static-content-generator-bundle/pull/136) - **New github actions reusable worflows** - [@norberttech](https://github.com/norberttech)
 
 ### Changed
