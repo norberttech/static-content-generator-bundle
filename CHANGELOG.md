@@ -1,4 +1,4 @@
-## [Unreleased] - 2022-07-07
+## [0.5.0] - 2022-07-18
 
 ### Added
 - [#238](https://github.com/norberttech/static-content-generator-bundle/pull/238) - **Symfony 6.x support** - [@norberttech](https://github.com/norberttech)
