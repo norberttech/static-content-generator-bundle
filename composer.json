@@ -19,6 +19,7 @@
         "symfony/http-kernel": "^4.4|^5.0|^6.0"
     },
     "require-dev": {
+        "ext-pcov": "*",
         "doctrine/annotations": "^1.11.1",
         "symfony/dotenv": "^5.4|^6",
         "symfony/framework-bundle": "^5.4|^6",
