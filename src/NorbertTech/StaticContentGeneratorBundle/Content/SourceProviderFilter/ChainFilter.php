@@ -10,6 +10,7 @@ final class ChainFilter implements SourceProviderFilter
 {
     /**
      * @var SourceProviderFilter[]
+     *
      * @psalm-var array<SourceProviderFilter>
      */
     private array $filters;

@@ -11,7 +11,9 @@ final class AllWithoutParameters implements Filter
 {
     /**
      * @param Route[] $routes
+     *
      * @psalm-param array<string, Route> $routes
+     *
      * @psalm-return array<string, Route>
      *
      * @return Route[]

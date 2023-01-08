@@ -11,6 +11,7 @@ final class RoutesWithNameFilter implements SourceProviderFilter
 {
     /**
      * @var string[]
+     *
      * @psalm-var array<string>
      */
     private array $routeNames;

@@ -8,6 +8,7 @@ interface SourceProvider
 {
     /**
      * @return Source[]
+     *
      * @psalm-return array<Source>
      */
     public function all() : array;

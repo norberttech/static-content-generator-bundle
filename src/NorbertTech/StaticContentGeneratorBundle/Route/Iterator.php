@@ -20,6 +20,7 @@ final class Iterator
      * @param Filter $filter
      *
      * @return Route[]
+     *
      * @psalm-return array<string, Route>
      */
     public function iterate(Filter $filter) : array

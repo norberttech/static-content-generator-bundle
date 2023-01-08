@@ -31,10 +31,12 @@ final class ProvidersCollection implements SourceProvider
 
     /**
      * @return Source[]
+     *
      * @psalm-return array<Source>
      */
     public function all() : array
     {
+        /** @psalm-suppress NamedArgumentNotAllowed */
         return \array_merge(
             ...\array_map(
                 function (SourceProvider $provider) : array {

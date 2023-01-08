@@ -11,6 +11,7 @@ final class RoutesWithoutNamePrefixFilter implements SourceProviderFilter
 {
     /**
      * @var string[]
+     *
      * @psalm-var array<string>
      */
     private array $routeNamesPrefixes;
