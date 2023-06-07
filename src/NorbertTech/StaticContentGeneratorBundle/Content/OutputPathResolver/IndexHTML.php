@@ -110,6 +110,6 @@ final class IndexHTML implements OutputPathResolver
             }
         }
 
-        return \rtrim($this->outputDirectory . '/') . DIRECTORY_SEPARATOR . \ltrim($content->path(), '/') . DIRECTORY_SEPARATOR . 'index.html';
+        return \rtrim($this->outputDirectory , '/') . DIRECTORY_SEPARATOR . \ltrim($content->path(), '/') . DIRECTORY_SEPARATOR . 'index.html';
     }
 }
