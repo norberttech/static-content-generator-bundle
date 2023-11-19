@@ -9,6 +9,9 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 final class Configuration implements ConfigurationInterface
 {
+    /**
+     * @psalm-suppress UndefinedMethod
+     */
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder('static_content_generator');
