@@ -14,19 +14,20 @@
         "php": "~8.1 || ~8.2 || ~8.3",
         "ext-json": "*",
         "norberttech/symfony-process-executor": "^2.0.4",
-        "symfony/browser-kit": "^4.4|^5.0|^6.0|^7.0",
-        "symfony/dependency-injection": "^4.4|^5.0|^6.0|^7.0",
-        "symfony/http-kernel": "^4.4|^5.0|^6.0|^7.0"
+        "symfony/browser-kit": "^5.4|^6.4|^7.0",
+        "symfony/dependency-injection": "^5.4|^6.4|^7.0",
+        "symfony/http-kernel": "^5.4|^6.4|^7.0"
     },
     "require-dev": {
         "doctrine/annotations": "^1.11.1 || ^2.0.0",
-        "symfony/dotenv": "^5.4|^6",
-        "symfony/framework-bundle": "^5.4|^6",
+        "symfony/dotenv": "^5.4|^6.4|^7.0",
+        "symfony/framework-bundle": "^5.4|^6.4|^7.0",
         "symfony/maker-bundle": "^1.36.4",
-        "symfony/stopwatch": "^5.4|^6",
+        "symfony/stopwatch": "^5.4|^6.4|^7.0",
         "symfony/twig-pack": "^1.0",
-        "symfony/web-profiler-bundle": "^5.4|^6",
-        "symfony/yaml": "^5.4|^6"
+        "symfony/web-profiler-bundle": "^5.4|^6.4|^7.0",
+        "symfony/yaml": "^5.4|^6.4|^7.0",
+        "nikic/php-parser": "^4.18"
     },
     "config": {
         "optimize-autoloader": true,
