@@ -4,6 +4,8 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    router.request_context.scheme: 'https'
+    router.request_context.host: 'static-content-generator.wip'
 
 services:
     # default configuration for services in *this* file
