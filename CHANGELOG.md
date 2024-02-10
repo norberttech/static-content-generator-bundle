@@ -1,3 +1,23 @@
+## [Unreleased] - 2024-02-10
+
+### Added
+- [#443](https://github.com/norberttech/static-content-generator-bundle/pull/443) - **PHP 8.3 support** - [@norberttech](https://github.com/norberttech)
+
+### Changed
+- [b8af5b](https://github.com/norberttech/static-content-generator-bundle/commit/b8af5bbb41c8a05792fe76826d6d170324a57581) - **Allow auto merge for semver minor** - [@norberttech](https://github.com/norberttech)
+
+### Fixed
+- [#444](https://github.com/norberttech/static-content-generator-bundle/pull/444) - **Properly respect router.request_context settings** - [@norberttech](https://github.com/norberttech)
+- [#444](https://github.com/norberttech/static-content-generator-bundle/pull/444) - **failing tests for different symfony version** - [@norberttech](https://github.com/norberttech)
+
+### Updated
+- [#443](https://github.com/norberttech/static-content-generator-bundle/pull/443) - **updated dependencies** - [@norberttech](https://github.com/norberttech)
+- [f15cc0](https://github.com/norberttech/static-content-generator-bundle/commit/f15cc0672f3b326b5c9def4ca9e1bfbe0a063d76) - **dependencies** - [@norberttech](https://github.com/norberttech)
+- [#391](https://github.com/norberttech/static-content-generator-bundle/pull/391) - **IndexHTML.php** - [@jerome-barbato](https://github.com/jerome-barbato)
+- [e0ffcd](https://github.com/norberttech/static-content-generator-bundle/commit/e0ffcd9c7f06f7cfa7a149e2b1d924f767b3fcc6) - **automerge github actions workflow** - [@norberttech](https://github.com/norberttech)
+- [1ecf96](https://github.com/norberttech/static-content-generator-bundle/commit/1ecf967745a5d53ad5e4f1301fcb093f2e8a2d8c) - **tools** - [@norberttech](https://github.com/norberttech)
+- [766763](https://github.com/norberttech/static-content-generator-bundle/commit/76676316abc2eba785f8d90d3070983d0873ca2c) - **dependencies** - [@norberttech](https://github.com/norberttech)
+
 ## [0.6.1] - 2024-02-10
 
 ### Added
