@@ -1,4 +1,27 @@
-controllers:
-    resource: ../../src/Controller/
-    type: annotation
+index:
+    path: /
+    controller: FixtureProject\Controller\StaticRoutesController::index
 
+index_html:
+    path: /index.html
+    controller: FixtureProject\Controller\StaticRoutesController::indexHtml
+
+version_1_x:
+    path: /version/1.x
+    controller: FixtureProject\Controller\StaticRoutesController::versionHtml
+
+api:
+    path: /api.json
+    controller: FixtureProject\Controller\StaticRoutesController::apiJson
+
+api_xml:
+    path: /api.xml
+    controller: FixtureProject\Controller\StaticRoutesController::apiXml
+
+named_route:
+    path: /named/route
+    controller: FixtureProject\Controller\StaticRoutesController::namedRoute
+
+parametrized_route:
+    path: /parametrized/{param1}/{param2}
+    controller: FixtureProject\Controller\StaticRoutesController::withParameters
