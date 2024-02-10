@@ -1,4 +1,4 @@
-## [Unreleased] - 2023-12-07
+## [0.6.1] - 2024-02-10
 
 ### Added
 - [#443](https://github.com/norberttech/static-content-generator-bundle/pull/443) - **PHP 8.3 support** - [@norberttech](https://github.com/norberttech)
