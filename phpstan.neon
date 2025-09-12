@@ -1,6 +1,11 @@
 parameters:
-    level: 6
+    level: 9
     paths:
         - src
 
     tmpDir: var/phpstan/cache
+services:
+    -
+        class: Flow\Types\PHPStan\StructureTypeReturnTypeExtension
+        tags:
+            - phpstan.broker.dynamicFunctionReturnTypeExtension

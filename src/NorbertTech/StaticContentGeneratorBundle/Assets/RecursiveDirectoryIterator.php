@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace NorbertTech\StaticContentGeneratorBundle\Assets;
 
+use function Flow\Types\DSL\type_instance_of;
+
 final class RecursiveDirectoryIterator
 {
     private string $path;
@@ -51,6 +53,8 @@ final class RecursiveDirectoryIterator
         );
 
         foreach ($fileIterator as $file) {
+            type_instance_of(\SplFileInfo::class)->assert($file);
+
             if (!$file->isDir() && $file->getExtension() === '') {
                 yield new Asset($this->path, $file);
             }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a897315791ef9c750f461588a6620a4",
+    "content-hash": "272381cd85cfbeae429e5c071bf837e5",
     "packages": [
         {
             "name": "aeon-php/calendar",
@@ -121,6 +121,59 @@
                 }
             ],
             "time": "2025-01-24T04:47:20+00:00"
+        },
+        {
+            "name": "flow-php/types",
+            "version": "0.23.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flow-php/types.git",
+                "reference": "f4e4d4f18a4511afbda581bcf994eb65e72fc9cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flow-php/types/zipball/f4e4d4f18a4511afbda581bcf994eb65e72fc9cb",
+                "reference": "f4e4d4f18a4511afbda581bcf994eb65e72fc9cb",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~8.2.0 || ~8.3.0 || ~8.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Flow/Types/DSL/functions.php"
+                ],
+                "psr-4": {
+                    "Flow\\": [
+                        "src/Flow"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Extended types for PHP aligned with modern static analysis tools to provide better type safety.",
+            "keywords": [
+                "php",
+                "types"
+            ],
+            "support": {
+                "issues": "https://github.com/flow-php/types/issues",
+                "source": "https://github.com/flow-php/types/tree/0.23.0"
+            },
+            "funding": [
+                {
+                    "url": "https://flow-php.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/norberttech",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-07-08T02:00:24+00:00"
         },
         {
             "name": "masterminds/html5",

@@ -13,6 +13,7 @@
     "require": {
         "php": "~8.2 || ~8.3 || ~8.4",
         "ext-json": "*",
+        "flow-php/types": "^0.23.0",
         "norberttech/symfony-process-executor": "^2.0.4",
         "symfony/browser-kit": "^5.4|^6.4|^7.0",
         "symfony/dependency-injection": "^5.4|^6.4|^7.0",
@@ -60,7 +61,6 @@
             "tools/vendor/bin/infection --threads=2 --only-covered"
         ],
         "static:analyze": [
-            "tools/vendor/bin/psalm --output-format=compact",
             "tools/vendor/bin/phpstan analyze -c phpstan.neon",
             "tools/vendor/bin/php-cs-fixer fix --dry-run"
         ],
