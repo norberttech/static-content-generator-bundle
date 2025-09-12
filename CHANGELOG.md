@@ -1,6 +1,10 @@
 ## [Unreleased] - 2025-09-12
 
+### Added
+- [#458](https://github.com/norberttech/static-content-generator-bundle/pull/458) - **flow-php/types library for better types narrowing** - [@norberttech](https://github.com/norberttech)
+
 ### Changed
+- [#458](https://github.com/norberttech/static-content-generator-bundle/pull/458) - **increase phpstan level to 9** - [@norberttech](https://github.com/norberttech)
 - [749fcd](https://github.com/norberttech/static-content-generator-bundle/commit/749fcdd0d8eda1a2e0c23f91e0230237fe6c2c8b) - **CS Fixes** - [@norberttech](https://github.com/norberttech)
 
 ### Fixed
@@ -11,6 +15,9 @@ to explicitly accept null and avoid type errors. Supported since PHP 7.1.** - [@
 ### Updated
 - [ef8501](https://github.com/norberttech/static-content-generator-bundle/commit/ef850161b3d61f5363fe38cb7b261af5dff44b25) - **README** - [@norberttech](https://github.com/norberttech)
 - [a10cbb](https://github.com/norberttech/static-content-generator-bundle/commit/a10cbb8e8b10a51b2464eba93d8a09d6b2cb1cc9) - **minimum php version to 8.2** - [@norberttech](https://github.com/norberttech)
+
+### Removed
+- [#458](https://github.com/norberttech/static-content-generator-bundle/pull/458) - **Psalm** - [@norberttech](https://github.com/norberttech)
 
 ## [0.6.1] - 2024-02-10
 
