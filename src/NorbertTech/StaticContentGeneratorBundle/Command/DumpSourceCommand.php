@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace NorbertTech\StaticContentGeneratorBundle\Command;
 
+use function Flow\Types\DSL\type_map;
+use function Flow\Types\DSL\type_string;
+use function Flow\Types\DSL\type_structure;
 use NorbertTech\StaticContentGeneratorBundle\Content\Content;
 use NorbertTech\StaticContentGeneratorBundle\Content\Source;
 use NorbertTech\StaticContentGeneratorBundle\Content\Transformer;
@@ -50,7 +53,22 @@ final class DumpSourceCommand extends Command
         );
 
         $generator->dump(
-            Source::hydrate(\json_decode(\base64_decode($input->getArgument('source'), true), true)),
+            Source::hydrate(
+                type_structure([
+                    'route_name' => type_string(),
+                    'parameters' => type_map(type_string(), type_string()),
+                ])->assert(
+                    \json_decode(
+                        type_string()->assert(
+                            \base64_decode(
+                                type_string()->assert($input->getArgument('source')),
+                                true
+                            )
+                        ),
+                        true
+                    )
+                )
+            ),
             function (Content $content) use ($output, $io) : void {
                 if ($output->isVerbose()) {
                     $io->note('Generated content: ' . $content->path());

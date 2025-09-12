@@ -9,7 +9,7 @@ final class Source
     private string $routerName;
 
     /**
-     * @var string[]
+     * @var array<string,string>
      */
     private array $parameters;
 
@@ -24,7 +24,7 @@ final class Source
     }
 
     /**
-     * @param array{route_name: string, parameters: array<string> } $data
+     * @param array{route_name: string, parameters: array<string, string> } $data
      */
     public static function hydrate(array $data) : self
     {
@@ -40,7 +40,7 @@ final class Source
     }
 
     /**
-     * @return string[]
+     * @return array<string, string>
      */
     public function parameters() : array
     {
@@ -48,7 +48,7 @@ final class Source
     }
 
     /**
-     * @return array{route_name: string, parameters: array<string>}
+     * @return array{route_name: string, parameters: array<string, string>}
      */
     public function serialize() : array
     {

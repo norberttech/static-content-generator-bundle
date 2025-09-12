@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace NorbertTech\StaticContentGeneratorBundle\Command;
 
+use function Flow\Types\DSL\type_list;
+use function Flow\Types\DSL\type_string;
 use Aeon\Calendar\Stopwatch;
 use NorbertTech\StaticContentGeneratorBundle\Assets\Asset;
 use NorbertTech\StaticContentGeneratorBundle\Assets\Assets;
@@ -48,7 +50,7 @@ final class CopyAssetsCommand extends Command
 
         $publicDirector = $this->projectDir . DIRECTORY_SEPARATOR . $input->getOption('public-dir');
 
-        $iterator = new RecursiveDirectoryIterator($publicDirector, $input->getOption('ignore'));
+        $iterator = new RecursiveDirectoryIterator($publicDirector, type_list(type_string())->assert($input->getOption('ignore')));
 
         $stopwatch = new Stopwatch();
         $stopwatch->start();

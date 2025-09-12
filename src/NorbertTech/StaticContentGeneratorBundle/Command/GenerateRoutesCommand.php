@@ -2,6 +2,9 @@
 
 namespace NorbertTech\StaticContentGeneratorBundle\Command;
 
+use function Flow\Types\DSL\type_integer;
+use function Flow\Types\DSL\type_list;
+use function Flow\Types\DSL\type_string;
 use Aeon\Calendar\Stopwatch;
 use NorbertTech\StaticContentGeneratorBundle\Content\Source;
 use NorbertTech\StaticContentGeneratorBundle\Content\SourceProvider;
@@ -71,23 +74,23 @@ class GenerateRoutesCommand extends Command
             new RoutesWithoutNamePrefixFilter($prefixes = ['_'])
         );
 
-        if (\count($input->getOption('filter-route'))) {
-            $sourcesFilter->addFilter(new RoutesWithNameFilter($input->getOption('filter-route')));
+        if (\count(type_list(type_string())->assert($input->getOption('filter-route')))) {
+            $sourcesFilter->addFilter(new RoutesWithNameFilter(type_list(type_string())->assert($input->getOption('filter-route'))));
         }
 
-        if (\count($input->getOption('filter-route-prefix'))) {
-            $sourcesFilter->addFilter(new RoutesWithNamePrefixFilter($input->getOption('filter-route-prefix')));
+        if (\count(type_list(type_string())->assert($input->getOption('filter-route-prefix')))) {
+            $sourcesFilter->addFilter(new RoutesWithNamePrefixFilter(type_list(type_string())->assert($input->getOption('filter-route-prefix'))));
         }
 
-        if (\count($input->getOption('exclude-route'))) {
-            $sourcesFilter->addFilter(new RoutesWithoutNameFilter($input->getOption('exclude-route')));
+        if (\count(type_list(type_string())->assert($input->getOption('exclude-route')))) {
+            $sourcesFilter->addFilter(new RoutesWithoutNameFilter(type_list(type_string())->assert($input->getOption('exclude-route'))));
         }
 
-        if (\count($input->getOption('exclude-route-prefix'))) {
-            $sourcesFilter->addFilter(new RoutesWithoutNamePrefixFilter($input->getOption('exclude-route-prefix')));
+        if (\count(type_list(type_string())->assert($input->getOption('exclude-route-prefix')))) {
+            $sourcesFilter->addFilter(new RoutesWithoutNamePrefixFilter(type_list(type_string())->assert($input->getOption('exclude-route-prefix'))));
         }
 
-        if ((int) $input->getOption('parallel') <= 0) {
+        if (type_integer()->cast($input->getOption('parallel')) <= 0) {
             $io->error('Parallel option must be greater or equal 1');
 
             return 1;
@@ -106,7 +109,7 @@ class GenerateRoutesCommand extends Command
         $stopwatch = new Stopwatch();
         $stopwatch->start();
 
-        $chunks = \array_chunk($sources, (int) $input->getOption('parallel'));
+        $chunks = \array_chunk($sources, type_integer()->cast($input->getOption('parallel')));
 
         foreach ($chunks as $chunk) {
             $processes = new ProcessPool(
@@ -115,7 +118,7 @@ class GenerateRoutesCommand extends Command
                         return new Process([
                             $input->getOption('cli'),
                             DumpSourceCommand::NAME,
-                            \base64_encode(\json_encode($source->serialize())),
+                            \base64_encode(type_string()->assert(\json_encode($source->serialize()))),
                             '--env=' . $input->getOption('env'),
                         ]);
                     },
