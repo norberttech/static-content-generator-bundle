@@ -20,7 +20,7 @@ final class StaticContent
         $this->writer = $writer;
     }
 
-    public function dump(Source $source, callable $callback = null) : void
+    public function dump(Source $source, ?callable $callback = null) : void
     {
         $this->writer->write(
             $content = $this->transformer->transform($source)
