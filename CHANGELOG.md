@@ -1,5 +1,8 @@
 ## [Unreleased] - 2025-09-12
 
+### Changed
+- [749fcd](https://github.com/norberttech/static-content-generator-bundle/commit/749fcdd0d8eda1a2e0c23f91e0230237fe6c2c8b) - **CS Fixes** - [@norberttech](https://github.com/norberttech)
+
 ### Fixed
 - [#457](https://github.com/norberttech/static-content-generator-bundle/pull/457) - **Changed declaration of NorbertTech\StaticContentGeneratorBundle\DependencyInjection\Configuration::getConfigTreeBuilder() to be compatible with Symfony\Component\Config\Definition\ConfigurationInterface::getConfigTreeBuilder()** - [@jerome-barbato](https://github.com/jerome-barbato)
 - [#457](https://github.com/norberttech/static-content-generator-bundle/pull/457) - **Changed method signature from `callable $callback = null` to `?callable $callback = null`
