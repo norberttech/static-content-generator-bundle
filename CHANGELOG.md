@@ -1,4 +1,4 @@
-## [Unreleased] - 2025-09-12
+## [0.6.2] - 2025-09-12
 
 ### Added
 - [#458](https://github.com/norberttech/static-content-generator-bundle/pull/458) - **flow-php/types library for better types narrowing** - [@norberttech](https://github.com/norberttech)
@@ -9,8 +9,7 @@
 
 ### Fixed
 - [#457](https://github.com/norberttech/static-content-generator-bundle/pull/457) - **Changed declaration of NorbertTech\StaticContentGeneratorBundle\DependencyInjection\Configuration::getConfigTreeBuilder() to be compatible with Symfony\Component\Config\Definition\ConfigurationInterface::getConfigTreeBuilder()** - [@jerome-barbato](https://github.com/jerome-barbato)
-- [#457](https://github.com/norberttech/static-content-generator-bundle/pull/457) - **Changed method signature from `callable $callback = null` to `?callable $callback = null`
-to explicitly accept null and avoid type errors. Supported since PHP 7.1.** - [@jerome-barbato](https://github.com/jerome-barbato)
+- [#457](https://github.com/norberttech/static-content-generator-bundle/pull/457) - **Changed method signature from `callable $callback = null` to `?callable $callback = null` to explicitly accept null and avoid type errors. Supported since PHP 7.1.** - [@jerome-barbato](https://github.com/jerome-barbato)
 
 ### Updated
 - [ef8501](https://github.com/norberttech/static-content-generator-bundle/commit/ef850161b3d61f5363fe38cb7b261af5dff44b25) - **README** - [@norberttech](https://github.com/norberttech)
