@@ -12,7 +12,7 @@ final class Configuration implements ConfigurationInterface
     /**
      * @psalm-suppress UndefinedMethod
      */
-    public function getConfigTreeBuilder(): TreeBuilder
+    public function getConfigTreeBuilder() : TreeBuilder
     {
         $treeBuilder = new TreeBuilder('static_content_generator');
 
