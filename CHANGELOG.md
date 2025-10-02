@@ -1,3 +1,8 @@
+## [Unreleased] - 2025-10-02
+
+### Updated
+- [fc4162](https://github.com/norberttech/static-content-generator-bundle/commit/fc416242504bdbeb4c781338b510fed3c7d63bbd) - **dependencies** - [@norberttech](https://github.com/norberttech)
+
 ## [0.6.2] - 2025-09-12
 
 ### Added
